@@ -42,6 +42,10 @@ and c.spraddr_status_ind is null
 and a.POSN is not null and a.STUID is not null
 ';
 
+if p1 is not null and p2 is not null then
+    v_sql_sub1 := v_sql_sub1 || ' and a.stuid = ''' || p1 || ''' and a.posn = ''' || p2 || '''';
+end if;
+
 v_sql_prnt1 := 
 '
 select distinct y.student_id, y.student_first_name, y.student_last_name, y.student_legal_name, y.vassar_email, y.workday_applicant_id, y.workday_employee_id, 
@@ -52,9 +56,7 @@ v_sql_sub1 || '
 ) y';
 
 
-if p1 is not null and p2 is not null then
-    v_sql_sub1 := v_sql_sub1 || ' and a.stuid = ''' || p1 || ''' and a.posn = ''' || p2 || '''';
-end if;
+
 
 
 OPEN REF_CUR_OUT FOR v_sql_prnt1
