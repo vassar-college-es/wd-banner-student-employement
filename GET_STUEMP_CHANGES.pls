@@ -88,6 +88,7 @@ from spbpers c, spriden p,  bn.rtfiles r, goradid g
 where r.pidm = p.spriden_pidm 
 and r.pidm = g.GORADID_PIDM(+)
 and r.pidm = c.spbpers_pidm
+and p.spriden_change_ind is null
 and r.cur_term = 'Y'
 and g.GORADID_PIDM(+) is not null
 and g.GORADID_ADID_CODE = 'WEID'
